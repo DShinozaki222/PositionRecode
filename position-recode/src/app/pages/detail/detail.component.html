@@ -1,0 +1,68 @@
+<div id="detail">
+    <div class="container">
+        <div class="row mt-20px mb-10px">
+            <div class="col-3">
+                <p-button label="削除" (onClick)="isDialog=true"></p-button>
+            </div>
+            <div class="col-3">
+                <p-button label="編集" (onClick)="edit()"></p-button>
+            </div>
+            <div class="col-3">
+                <p-button label="戻る" (onClick)="return()"></p-button>
+            </div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">名前</div>
+            <div class="col-9">{{store.storeName}}</div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">お気に入り</div>
+            <div class="col-9">
+                <p-rating [(ngModel)]="favorite" [stars]="1" [readonly]="true" [cancel]="false"></p-rating>
+            </div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">評価</div>
+            <div class="col-9">
+                <p-rating [(ngModel)]="starCount" [readonly]="true" [cancel]="false"></p-rating>
+            </div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">住所</div>
+            <div class="col-9">{{store.address.province}} {{store.address.county}} {{store.address.town}} {{ store.address.city }} {{store.address.neighbourhood}}</div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">地図</div>
+            <div class="col-9">
+                <google-map height="300px" width="300px" [center]="center" [zoom]="zoom" [options]="options">
+                    <map-marker *ngIf="currentPosition"
+                    [position]="currentPosition">
+                  </map-marker>
+                </google-map>
+            </div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">メモ</div>
+            <div class="col-9">
+                <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="note" [disabled]="true"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="削除の確認" [modal]="true" [(visible)]="isDialog" [style]="{width: '50vw'}" [maximizable]="true">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">削除してよろしいですか？</div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p-button label="削除" (onClick)="delete()"></p-button>
+            </div>
+            <div class="col-6">
+                <p-button label="キャンセル" (onClick)="isDialog=false"></p-button>
+            </div>
+        </div>
+    </div>
+</p-dialog>

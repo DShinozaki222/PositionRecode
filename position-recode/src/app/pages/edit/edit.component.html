@@ -1,0 +1,55 @@
+<div id="detail">
+    <div class="container">
+        <div class="row mt-20px mb-10px">
+            <div class="col-3">
+                <p-button label="戻る" (onClick)="return()"></p-button>
+            </div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">名前</div>
+            <div class="col-9"><input type="text" pInputText [(ngModel)]="storeName" /></div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">お気に入り</div>
+            <div class="col-9"><p-inputSwitch [(ngModel)]="favorite"></p-inputSwitch></div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">評価</div>
+            <div class="col-9">
+                <p-rating [(ngModel)]="starCount"  [cancel]="false"></p-rating>
+            </div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">住所</div>
+            <div class="col-9">
+                <input type="text" pInputText [(ngModel)]="address" (change)="inputAddress()"/>
+            </div>
+        </div>
+        <div class="row row-border">
+            <div class="col-3">地図</div>
+            <div class="col-9">
+                <google-map height="300px" width="300px" [center]="center" [zoom]="zoom" [options]="options" (mapClick)="mapClick($event)">
+                    <map-marker *ngIf="currentPosition" [position]="currentPosition"></map-marker>
+                </google-map>
+            </div>
+        </div>
+        <div class="row row-border">
+            <!-- <p-editor [(ngModel)]="note" [style]="{ height: '320px' }"></p-editor> -->
+            <div class="col-3">メモ</div>
+            <div class="col-9">
+                <textarea rows="10" cols="30" pInputTextarea [(ngModel)]="note"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <p-button label="戻る" (onClick)="return()"></p-button>
+            </div>
+            <div *ngIf="isUpdate" class="col-3">
+                <p-button label="更新" (onClick)="update()"></p-button>
+            </div>
+            <div *ngIf="isUpdate===false" class="col-3">
+                <p-button label="登録" (onClick)="regist()"></p-button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+.input-box {
+    width: 40vw;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 10px;
+}
+
+.app-title {
+    width: 40vw;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.app-title p {
+    text-align: center;
+    font-size: 40px;
+}
+
+.mb-30px {
+    margin-bottom: 30px;
+}
+
+.mb-20px {
+    margin-bottom: 20px;
+}
+
+.mb-10px {
+    margin-bottom: 10px;
+}
+
+.mt-30px {
+    margin-top: 30px;
+}
+
+.mt-20px {
+    margin-top: 20px;
+}
+
+.mt-10px {
+    margin-top: 10px;
+}
+
+
+::ng-deep .p-inputtext {
+    width: 100%;
+}
+
+::ng-deep .p-password {
+    width: 100%;
+}
+
+::ng-deep .p-button {
+    width: 100%;
+}

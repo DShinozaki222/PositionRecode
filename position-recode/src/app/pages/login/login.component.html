@@ -1,0 +1,77 @@
+<div id="login">
+    <div class="container">
+        <div class="app-title">
+            <p>Position Recoder</p>
+        </div>
+        <div class="input-box">
+            <div *ngIf="isChangeShow == true">
+                <div class="row">
+                    <div class="col-12 mb-30px">
+                        <div>メールアドレス</div>
+                        <input type="text" pInputText [(ngModel)]="mail" />
+                    </div>
+                    <div class="col-12 mb-30px">
+                        <div>パスワード</div>
+                        <p-password [(ngModel)]="password" [toggleMask]="true"></p-password>
+                    </div>
+                    
+                    <div class="col-12 mb-30px">
+                        <p-button label="ログイン" [disabled]="isActevateLoginBtn()" (onClick)="login()"></p-button>
+                    </div>
+        
+                    <div class="col-12">
+                        <a (click)="isChangeShow = false" style="cursor: pointer;">登録はこちら</a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isChangeShow == false">
+                <div class="row">
+                    <div class="col-12 mb-30px">
+                        <div>名前</div>
+                        <input type="text" pInputText [(ngModel)]="registName" />
+                    </div>
+                    <div class="col-12 mb-30px">
+                        <div>メールアドレス</div>
+                        <input type="text" pInputText [(ngModel)]="registMail" />
+                    </div>
+                    <div class="col-12 mb-30px">
+                        <div>パスワード</div>
+                        <p-password [(ngModel)]="registPassword" [toggleMask]="true"></p-password>
+                        <div class="mt-20px">確認パスワード</div>
+                        <p-password [(ngModel)]="comfirmRegistPassword" [toggleMask]="true"></p-password>
+                    </div>
+                    
+                    <div class="col-12 mb-30px">
+                        <p-button label="登録確認" [disabled]="isActivateRegistBtn()" (onClick)="isDialog=true"></p-button>
+                    </div>
+        
+                    <div class="col-12">
+                        <a (click)="isChangeShow=true" style="cursor: pointer;">ログイン画面に戻る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<p-dialog header="登録内容の確認" [modal]="true" [(visible)]="isDialog" [style]="{width: '50vw'}" [maximizable]="true">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">名前</div>
+            <div class="col-8">{{registName}}</div>
+        </div>
+        <div class="row">
+            <div class="col-4">メールアドレス</div>
+            <div class="col-8">{{registMail}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p-button label="登録" (onClick)="regist()"></p-button>
+            </div>
+            <div class="col-6">
+                <p-button label="キャンセル" (onClick)="isDialog=false"></p-button>
+            </div>
+        </div>
+    </div>
+</p-dialog>

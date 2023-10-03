@@ -1,0 +1,18 @@
+export type TStore = {
+    id: number,
+    storeName: string,
+    latitude: number,
+    longitude: number,
+    favorite: number,
+    evaluation: number,
+    country: string,
+    countryCode: string,
+    county: string,
+    neighbourhood: string,
+    postcode: string,
+    province: string,
+    town: string,
+    city: string,
+    note: string,
+    registAt: string,
+}
